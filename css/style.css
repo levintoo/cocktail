@@ -163,3 +163,55 @@ cursor: pointer;
     align-items: center;
     flex-direction: column;
 }
+.modal-content{
+    background: var(--tenne-tawny);
+}
+.recipe-popup{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 10px;
+    margin-left: 10px
+}
+.btn-close{
+    position: absolute;
+    top: 13px;
+    right: 13px;
+    z-index: 10;
+    margin: 10px;
+}
+.food-namebtn{
+    background: var(--white);
+    color: var(--tenne-tawny);
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding: 0.5rem;
+    margin: 10px;
+    font-weight: bold;
+    font-size: 1rem;
+}
+.rouded-recipe-image{
+    border-radius:50%;
+    width:10rem;
+    height: 10rem;
+    margin: 10px;
+}
+.food-name{
+    font-family: var(--heading-font);
+    color: var(--white);
+    margin-top: 30px;
+    margin-top: 30px;
+}
+.recipe-popup h6{
+    font-size: 1.5rem;
+    color: var(--white);
+}
+.recipe-instructions{
+    color: var(--white);
+}
+.recipe-popup a{
+    color: var(--white);
+}
+

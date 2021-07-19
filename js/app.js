@@ -2,7 +2,7 @@
 
 
   async function getdata(){
-    let response= await fetch("https://www.themealdb.com/api/json/v1/1/categories.php");
+    let response= await fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata");
     let data= await response.json();
    
  
