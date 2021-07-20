@@ -32,7 +32,9 @@ carddecriptionname.classList.add(`food-n`);
 cardDescriptionDiv.appendChild(carddecriptionname);
 
 const carddecriptionButton= document.createElement('button');
-
+carddecriptionButton.setAttribute("id", "get-recipe-btn");
+carddecriptionButton.setAttribute("data-bs-toggle", "modal");
+carddecriptionButton.setAttribute("data-bs-target", "#staticBackdrop");
 cardDescriptionDiv.appendChild(carddecriptionButton);
 
 
