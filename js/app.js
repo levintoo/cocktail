@@ -1,8 +1,11 @@
 const searchBtn = document.querySelector('.submit-input');
 const mealList = document.querySelector('.search-results');
 const mealDetaislContent = document.querySelector('.modal-content');
-const mealContainer = document.querySelector('.recipes-cards-container')
+const mealContainer = document.querySelector('.recipes-cards-container');
+const getRecipeBtn = document.querySelectorAll('#get-recipe-btn');
+
 searchBtn.addEventListener('click', getMealList);
+
 
 // get least that mathes ingridients
 function getMealList() {
@@ -11,9 +14,11 @@ function getMealList() {
   fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchInput}`)
     .then(response => response.json())
     .then(data => {
-
+      console.log(data);
       if (data.meals) {
         data.meals.forEach(meal => {
+
+
           document.querySelector('.feedback-title').innerHTML=("Food found");
           document.querySelector('.feedback-title').classList.add("text-success");
 
@@ -53,3 +58,14 @@ function getMealList() {
       }
     })
 };
+
+function getMealDetails(){
+
+  fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=52772`)
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+  })
+}
+
+getMealDetails();
