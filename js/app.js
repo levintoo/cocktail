@@ -1,7 +1,7 @@
 const searchBtn = document.querySelector('.submit-input');
 const mealList = document.querySelector('.search-results');
 const mealDetaislContent = document.querySelector('.modal-content');
-
+const mealContainer = document.querySelector('.recipes-cards-container')
 searchBtn.addEventListener('click', getMealList);
 
 // get least that mathes ingridients
@@ -11,17 +11,37 @@ function getMealList() {
   fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchInput}`)
   .then(response => response.json())
   .then(data =>{
-    console.log(data);
+
+    if(data.meals){
+        data.meals.forEach(meal => {
+          console.log(mealContainer)
+           
+const recipeCard = document.createElement('div');
+recipeCard.classList.add(`col-lg-3`,`col-md-5`,`col-sm-10`,`recipe-card`)
+mealContainer.appendChild(recipeCard);
+
+const recipeCardImage = document.createElement('img');
+recipeCard.appendChild(recipeCardImage);
+
+const cardDescriptionDiv = document.createElement('div');
+cardDescriptionDiv.classList.add(`card-description`);
+recipeCard.appendChild(cardDescriptionDiv);
+
+const carddecriptionname= document.createElement('h4');
+carddecriptionname.classList.add(`food-n`);
+cardDescriptionDiv.appendChild(carddecriptionname);
+
+const carddecriptionButton= document.createElement('button');
+
+cardDescriptionDiv.appendChild(carddecriptionButton);
+
+
+
+ 
+        });
+    }
   })
 };
-
-
-
-
-
-
-
-
 
 
 
