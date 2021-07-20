@@ -104,8 +104,8 @@ header .signature {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    /* justify-content: center;
-    align-content: center; */
+    justify-content: center;
+    align-content: center;
     position: relative;
     margin-top: 4rem;
     padding: 1rem;

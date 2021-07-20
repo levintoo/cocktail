@@ -14,14 +14,16 @@ function getMealList() {
 
     if(data.meals){
         data.meals.forEach(meal => {
-          console.log(mealContainer)
-           
+
 const recipeCard = document.createElement('div');
 recipeCard.classList.add(`col-lg-3`,`col-md-5`,`col-sm-10`,`recipe-card`)
 mealContainer.appendChild(recipeCard);
+recipeCard.setAttribute("id", `${meal.idMeal}`);
 
 const recipeCardImage = document.createElement('img');
 recipeCard.appendChild(recipeCardImage);
+recipeCardImage.setAttribute("src", `${meal.strMealThumb}`);
+
 
 const cardDescriptionDiv = document.createElement('div');
 cardDescriptionDiv.classList.add(`card-description`);
@@ -30,12 +32,14 @@ recipeCard.appendChild(cardDescriptionDiv);
 const carddecriptionname= document.createElement('h4');
 carddecriptionname.classList.add(`food-n`);
 cardDescriptionDiv.appendChild(carddecriptionname);
+carddecriptionname.innerHTML=(`${meal.strMeal}`)
 
 const carddecriptionButton= document.createElement('button');
 carddecriptionButton.setAttribute("id", "get-recipe-btn");
 carddecriptionButton.setAttribute("data-bs-toggle", "modal");
 carddecriptionButton.setAttribute("data-bs-target", "#staticBackdrop");
 cardDescriptionDiv.appendChild(carddecriptionButton);
+carddecriptionButton.innerHTML=("Get Recipe")
 
 
 
