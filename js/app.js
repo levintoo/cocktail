@@ -42,7 +42,7 @@ function getMealList() {
 
           const carddecriptionButton = document.createElement('button');
           carddecriptionButton.setAttribute("mealid", `${meal.idMeal}`);
-          carddecriptionButton.setAttribute("class", "get-recipe-btn");
+          carddecriptionButton.setAttribute("id", "get-recipe-btn");
           // carddecriptionButton.setAttribute("data-bs-toggle", "modal");
           carddecriptionButton.setAttribute("data-bs-target", "#staticBackdrop");
           cardDescriptionDiv.appendChild(carddecriptionButton);
@@ -51,6 +51,11 @@ function getMealList() {
 
 
 
+        });
+        document.querySelectorAll('#get-recipe-btn').forEach(function(li) {
+          li.addEventListener('click', function() {
+            alert(this.id);
+          });
         });
       } else {
         document.querySelector('.feedback-title').innerHTML = ("Food could not be found");
@@ -61,9 +66,3 @@ function getMealList() {
     })
 };
 
-
-document.querySelectorAll('.get-recipe-btn').forEach(function(li) {
-  li.addEventListener('click', function() {
-    alert(this.id);
-  });
-});
