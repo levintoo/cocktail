@@ -4,13 +4,13 @@ const mealDetaislContent = document.querySelector('.modal-content');
 const mealContainer = document.querySelector('.recipes-cards-container');
 
 
+// searchBtn.addEventListener('click', getMealList)
 getMealList();
-
 // get least that mathes ingridients
 function getMealList() {
   let searchInput = document.querySelector('#search-input').value.trim();
   console.log(searchInput);
-  fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=onions`)
+  fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=rice`  )
     .then(response => response.json())
     .then(data => {
       console.log(data);
@@ -41,9 +41,9 @@ function getMealList() {
           carddecriptionname.innerHTML = (`${meal.strMeal}`)
 
           const carddecriptionButton = document.createElement('button');
-          carddecriptionButton.setAttribute("mealid", `${meal.idMeal}`);
+          carddecriptionButton.setAttribute("datamealid", `${meal.idMeal}`);
           carddecriptionButton.setAttribute("id", "get-recipe-btn");
-          // carddecriptionButton.setAttribute("data-bs-toggle", "modal");
+          carddecriptionButton.setAttribute("data-bs-toggle", "modal");
           carddecriptionButton.setAttribute("data-bs-target", "#staticBackdrop");
           cardDescriptionDiv.appendChild(carddecriptionButton);
           carddecriptionButton.innerHTML = ("Get Recipe")
@@ -52,9 +52,42 @@ function getMealList() {
 
 
         });
-        document.querySelectorAll('#get-recipe-btn').forEach(function(li) {
-          li.addEventListener('click', function() {
-            alert(this.id);
+        document.querySelectorAll('#get-recipe-btn').forEach(function (li) {
+          li.addEventListener('click', function () {
+            console.log(this.datamealid, "Mealid")
+            getMealdetails();
+            async function getMealdetails() {
+
+              // const selectedMealid = this.data-mealid;
+
+
+            
+              fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=53031` )
+                .then(response => response.json())
+                .then(data => {
+                  console.log(data);
+                  if (data.meals) {
+                    data.meals.forEach(meal => {
+                      const mealName = document.querySelector('.food-name');
+                      const mealCategory = document.querySelector('.food-namebtn');
+                      const mealRecipe = document.querySelector('.recipe-instructions');
+                      const mealVideoLink = document.querySelector('.mealVideolink');
+
+                      mealName.innerHTML=(meal.strMeal)
+                      mealCategory.innerHTML=(meal.strCategory)
+                      mealRecipe.innerHTML=(meal.strInstructions)
+                      mealVideoLink.setAttribute('src', meal.strYoutube)
+
+
+                    })}
+
+
+
+                })
+            };
+
+
+            // /end of modal functions
           });
         });
       } else {
@@ -65,4 +98,3 @@ function getMealList() {
 
     })
 };
-
