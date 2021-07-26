@@ -2,16 +2,15 @@ const searchBtn = document.querySelector('.submit-input');
 const mealList = document.querySelector('.search-results');
 const mealDetaislContent = document.querySelector('.modal-content');
 const mealContainer = document.querySelector('.recipes-cards-container');
-const getRecipeBtn = document.querySelectorAll('#get-recipe-btn');
 
-searchBtn.addEventListener('click', getMealList);
 
+getMealList();
 
 // get least that mathes ingridients
 function getMealList() {
   let searchInput = document.querySelector('#search-input').value.trim();
   console.log(searchInput);
-  fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchInput}`)
+  fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=onions`)
     .then(response => response.json())
     .then(data => {
       console.log(data);
@@ -19,13 +18,13 @@ function getMealList() {
         data.meals.forEach(meal => {
 
 
-          document.querySelector('.feedback-title').innerHTML=("Food found");
+          document.querySelector('.feedback-title').innerHTML = ("Food found");
           document.querySelector('.feedback-title').classList.add("text-success");
 
           const recipeCard = document.createElement('div');
-          recipeCard.classList.add(`col-lg-3`, `col-md-5`, `col-sm-10`, `recipe-card`)
+          recipeCard.classList.add(`col-lg-4`, `col-md-4`, `col-sm-10`, `recipe-card`)
           mealContainer.appendChild(recipeCard);
-          recipeCard.setAttribute("id", `${meal.idMeal}`);
+
 
           const recipeCardImage = document.createElement('img');
           recipeCard.appendChild(recipeCardImage);
@@ -42,8 +41,9 @@ function getMealList() {
           carddecriptionname.innerHTML = (`${meal.strMeal}`)
 
           const carddecriptionButton = document.createElement('button');
-          carddecriptionButton.setAttribute("id", "get-recipe-btn");
-          carddecriptionButton.setAttribute("data-bs-toggle", "modal");
+          carddecriptionButton.setAttribute("mealid", `${meal.idMeal}`);
+          carddecriptionButton.setAttribute("class", "get-recipe-btn");
+          // carddecriptionButton.setAttribute("data-bs-toggle", "modal");
           carddecriptionButton.setAttribute("data-bs-target", "#staticBackdrop");
           cardDescriptionDiv.appendChild(carddecriptionButton);
           carddecriptionButton.innerHTML = ("Get Recipe")
@@ -52,20 +52,18 @@ function getMealList() {
 
 
         });
-      }else{
-        document.querySelector('.feedback-title').innerHTML=("Food could not be found");
+      } else {
+        document.querySelector('.feedback-title').innerHTML = ("Food could not be found");
         document.querySelector('.feedback-title').classList.add("text-danger");
       }
+
+
     })
 };
 
-function getMealDetails(){
 
-  fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=52772`)
-  .then(response => response.json())
-  .then(data => {
-    console.log(data);
-  })
-}
-
-getMealDetails();
+document.querySelectorAll('.get-recipe-btn').forEach(function(li) {
+  li.addEventListener('click', function() {
+    alert(this.id);
+  });
+});
