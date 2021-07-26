@@ -41,7 +41,7 @@ function getMealList() {
           carddecriptionname.innerHTML = (`${meal.strMeal}`)
 
           const carddecriptionButton = document.createElement('button');
-          carddecriptionButton.setAttribute("datamealid", `${meal.idMeal}`);
+          carddecriptionButton.setAttribute("name", `${meal.idMeal}`);
           carddecriptionButton.setAttribute("id", "get-recipe-btn");
           carddecriptionButton.setAttribute("data-bs-toggle", "modal");
           carddecriptionButton.setAttribute("data-bs-target", "#staticBackdrop");
@@ -54,29 +54,33 @@ function getMealList() {
         });
         document.querySelectorAll('#get-recipe-btn').forEach(function (li) {
           li.addEventListener('click', function () {
-            console.log(this.datamealid, "Mealid")
+    
             getMealdetails();
             async function getMealdetails() {
 
               // const selectedMealid = this.data-mealid;
 
+              console.log(this.id);
 
-            
               fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=53031` )
                 .then(response => response.json())
                 .then(data => {
                   console.log(data);
                   if (data.meals) {
                     data.meals.forEach(meal => {
+
+                          
                       const mealName = document.querySelector('.food-name');
                       const mealCategory = document.querySelector('.food-namebtn');
                       const mealRecipe = document.querySelector('.recipe-instructions');
                       const mealVideoLink = document.querySelector('.mealVideolink');
+                      const mealImage= document.querySelector('.recipeImage');
 
                       mealName.innerHTML=(meal.strMeal)
                       mealCategory.innerHTML=(meal.strCategory)
                       mealRecipe.innerHTML=(meal.strInstructions)
                       mealVideoLink.setAttribute('src', meal.strYoutube)
+                      mealImage.setAttribute('src', meal.strMealThumb)
 
 
                     })}

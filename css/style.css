@@ -166,6 +166,7 @@ cursor: pointer;
 }
 .modal-content{
     background: var(--tenne-tawny);
+    overflow: scroll;
 }
 .recipe-popup{
     position: relative;
