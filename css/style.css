@@ -177,7 +177,7 @@ cursor: pointer;
 /* beginning of modal */
 .modal-content{
     background: var(--tenne-tawny);
-    overflow-y: scroll;
+    overflow-y: overlay;
     scroll-behavior: smooth;
     width: 80vh;
 }
