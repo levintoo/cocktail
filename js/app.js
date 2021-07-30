@@ -21,7 +21,8 @@ function getMealList() {
           document.querySelector('.feedback-title').innerHTML = ("Food found");
           document.querySelector('.feedback-title').classList.add("text-success");
 
-          const recipeCard = document.createElement('div');
+          let recipeCard = '';
+          recipeCard = document.createElement('div');
           recipeCard.classList.add(`col-lg-3`, `col-md-4`, `col-sm-5`, `recipe-card`);
           mealContainer.appendChild(recipeCard);
 
@@ -49,7 +50,7 @@ function getMealList() {
           cardDescriptionDiv.appendChild(carddecriptionButton);
           carddecriptionButton.innerHTML = ("Get Recipe");
 
-          carddecriptionButton.addEventListener('click', async function(){
+          carddecriptionButton.addEventListener('click', async function () {
             await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal.idMeal}`)
               .then(response => response.json())
               .then(data => {
@@ -57,7 +58,7 @@ function getMealList() {
                 if (data.meals) {
                   data.meals.forEach(meal => {
 
-  
+
                     // dynamic creation of popup modal
 
                     // const modalContent = document.querySelector('.modal-content');
@@ -93,16 +94,16 @@ function getMealList() {
                     // recipePopup.appendChild(foodImageDIalog);
                     // foodImageDIalog.classList.add('rouded-recipe-image','recipeImage');
                     // foodImageDIalog.setAttribute('alt', 'food-image')
-                   
+
                     // const foodInstructionsLinktDIalog = document.createElement('a');
                     // recipePopup.appendChild(foodInstructionsLinktDIalog);
                     // foodInstructionsLinktDIalog.classList.add('mealVideolink');
-                    
+
 
                     // const foodInstructionsLinkTextDIalog = document.createElement('p');
                     // foodInstructionsLinktDIalog.appendChild(foodInstructionsLinkTextDIalog);
                     // foodInstructionsLinkTextDIalog.innerHTML=('Watch Video')
-                    
+
 
                     const mealName = document.querySelector('.food-name');
                     const mealCategory = document.querySelector('.food-namebtn');
@@ -113,7 +114,7 @@ function getMealList() {
                     mealName.innerHTML = (meal.strMeal)
                     mealCategory.innerHTML = (meal.strCategory)
                     mealRecipe.innerHTML = (meal.strInstructions)
-                    mealVideoLink.setAttribute('src', meal.strYoutube)
+                    mealVideoLink.setAttribute('href', meal.strYoutube)
                     mealImage.setAttribute('src', meal.strMealThumb)
 
                   })
@@ -124,38 +125,7 @@ function getMealList() {
               })
 
           });
-          // document.querySelectorAll('#get-recipe-btn').forEach(function (li) {
-          //   li.addEventListener('click', function () {
 
-          //     getMealdetails();
-          //     async function getMealdetails() {
-
-          //       // const selectedMealid = this.data-mealid;
-
-          //       console.log(this.id);
-
-          //       fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=53031` )
-          //         .then(response => response.json())
-          //         .then(data => {
-          //           console.log(data);
-          //           if (data.meals) {
-          //             data.meals.forEach(meal => {
-
-
-
-
-
-          //             })}
-
-
-
-          //         })
-          //     };
-
-
-          //     // /end of modal functions
-          //   });
-          // });
         })
       } else {
         document.querySelector('.feedback-title').innerHTML = ("Food could not be found");
