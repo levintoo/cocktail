@@ -10,7 +10,7 @@ getMealList();
 function getMealList() {
   let searchInput = document.querySelector('#search-input').value.trim();
   console.log(searchInput);
-  fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=rice`  )
+  fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=rice`)
     .then(response => response.json())
     .then(data => {
       console.log(data);
@@ -22,7 +22,7 @@ function getMealList() {
           document.querySelector('.feedback-title').classList.add("text-success");
 
           const recipeCard = document.createElement('div');
-          recipeCard.classList.add(`col-lg-4`, `col-md-4`, `col-sm-10`, `recipe-card`)
+          recipeCard.classList.add(`col-lg-4`, `col-md-4`, `col-sm-10`, `recipe-card`);
           mealContainer.appendChild(recipeCard);
 
 
@@ -38,62 +38,78 @@ function getMealList() {
           const carddecriptionname = document.createElement('h4');
           carddecriptionname.classList.add(`food-n`);
           cardDescriptionDiv.appendChild(carddecriptionname);
-          carddecriptionname.innerHTML = (`${meal.strMeal}`)
+          carddecriptionname.innerHTML = (`${meal.strMeal}`);
 
           const carddecriptionButton = document.createElement('button');
+
           carddecriptionButton.setAttribute("name", `${meal.idMeal}`);
           carddecriptionButton.setAttribute("id", "get-recipe-btn");
           carddecriptionButton.setAttribute("data-bs-toggle", "modal");
           carddecriptionButton.setAttribute("data-bs-target", "#staticBackdrop");
           cardDescriptionDiv.appendChild(carddecriptionButton);
-          carddecriptionButton.innerHTML = ("Get Recipe")
+          carddecriptionButton.innerHTML = ("Get Recipe");
+
+          carddecriptionButton.addEventListener('click', async function(){
+            await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal.idMeal}`)
+              .then(response => response.json())
+              .then(data => {
+                console.log(data);
+                if (data.meals) {
+                  data.meals.forEach(meal => {
+                    
+                    const mealName = document.querySelector('.food-name');
+                    const mealCategory = document.querySelector('.food-namebtn');
+                    const mealRecipe = document.querySelector('.recipe-instructions');
+                    const mealVideoLink = document.querySelector('.mealVideolink');
+                    const mealImage = document.querySelector('.recipeImage');
+
+                    mealName.innerHTML = (meal.strMeal)
+                    mealCategory.innerHTML = (meal.strCategory)
+                    mealRecipe.innerHTML = (meal.strInstructions)
+                    mealVideoLink.setAttribute('src', meal.strYoutube)
+                    mealImage.setAttribute('src', meal.strMealThumb)
+
+                  })
+                }
 
 
 
+              })
 
-        });
-        document.querySelectorAll('#get-recipe-btn').forEach(function (li) {
-          li.addEventListener('click', function () {
-    
-            getMealdetails();
-            async function getMealdetails() {
-
-              // const selectedMealid = this.data-mealid;
-
-              console.log(this.id);
-
-              fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=53031` )
-                .then(response => response.json())
-                .then(data => {
-                  console.log(data);
-                  if (data.meals) {
-                    data.meals.forEach(meal => {
-
-                          
-                      const mealName = document.querySelector('.food-name');
-                      const mealCategory = document.querySelector('.food-namebtn');
-                      const mealRecipe = document.querySelector('.recipe-instructions');
-                      const mealVideoLink = document.querySelector('.mealVideolink');
-                      const mealImage= document.querySelector('.recipeImage');
-
-                      mealName.innerHTML=(meal.strMeal)
-                      mealCategory.innerHTML=(meal.strCategory)
-                      mealRecipe.innerHTML=(meal.strInstructions)
-                      mealVideoLink.setAttribute('src', meal.strYoutube)
-                      mealImage.setAttribute('src', meal.strMealThumb)
-
-
-                    })}
-
-
-
-                })
-            };
-
-
-            // /end of modal functions
           });
-        });
+          // document.querySelectorAll('#get-recipe-btn').forEach(function (li) {
+          //   li.addEventListener('click', function () {
+
+          //     getMealdetails();
+          //     async function getMealdetails() {
+
+          //       // const selectedMealid = this.data-mealid;
+
+          //       console.log(this.id);
+
+          //       fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=53031` )
+          //         .then(response => response.json())
+          //         .then(data => {
+          //           console.log(data);
+          //           if (data.meals) {
+          //             data.meals.forEach(meal => {
+
+
+
+
+
+          //             })}
+
+
+
+          //         })
+          //     };
+
+
+          //     // /end of modal functions
+          //   });
+          // });
+        })
       } else {
         document.querySelector('.feedback-title').innerHTML = ("Food could not be found");
         document.querySelector('.feedback-title').classList.add("text-danger");
