@@ -22,7 +22,7 @@ function getMealList() {
           document.querySelector('.feedback-title').classList.add("text-success");
 
           const recipeCard = document.createElement('div');
-          recipeCard.classList.add(`col-lg-4`, `col-md-4`, `col-sm-10`, `recipe-card`);
+          recipeCard.classList.add(`col-lg-3`, `col-md-4`, `col-sm-5`, `recipe-card`);
           mealContainer.appendChild(recipeCard);
 
 

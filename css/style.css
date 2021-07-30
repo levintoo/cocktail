@@ -112,8 +112,8 @@ header .signature {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    /* justify-content: center;
-    align-content: center; */
+    justify-content: center;
+    align-content: center;
     position: relative;
     margin-top: 4rem;
     padding: 1rem;
@@ -122,10 +122,8 @@ header .signature {
 }
 
 .recipe-card {
-
-    min-height: 32rem;
+    height: 20rem;
     background: var(--white);
-    margin: 1.5rem;
     border-radius: 10px;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
 }

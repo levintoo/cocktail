@@ -1,0 +1,57 @@
+
+@media only screen and (max-width: 800px) {
+
+    .recipes-cards-container {
+        margin-top: 2rem;
+        padding: 1rem;
+    }
+
+    .recipe-card {
+        height: 25rem;
+        width: 42%;
+        margin: 1rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    header {
+        margin: 10px;
+        width: 97%;
+    }
+
+    .input-items>input {
+        width: 17rem;
+        height: 3rem;
+    }
+
+    .input-items button {
+        height: 3rem;
+    }
+}
+
+@media only screen and (max-width: 520px) {
+    header {
+        margin: 10px;
+        width: 97%;
+    }
+
+    .input-items>input {
+        width: 17rem;
+        height: 3rem;
+    }
+
+    .input-items button {
+        height: 3rem;
+    }
+
+    .recipes-cards-container {
+        margin-top: 2rem;
+    }
+
+    .recipe-card {
+        min-height: 30rem;
+        width: 100%;
+        margin: 0 0 1rem 0;
+    }
+
+}
