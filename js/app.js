@@ -4,13 +4,13 @@ const mealDetaislContent = document.querySelector('.modal-content');
 const mealContainer = document.querySelector('.recipes-cards-container');
 
 
-// searchBtn.addEventListener('click', getMealList)
-getMealList();
+searchBtn.addEventListener('click', getMealList)
+
 // get least that mathes ingridients
 function getMealList() {
   let searchInput = document.querySelector('#search-input').value.trim();
   console.log(searchInput);
-  fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=rice`)
+  fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchInput}`)
     .then(response => response.json())
     .then(data => {
       console.log(data);
@@ -56,7 +56,14 @@ function getMealList() {
                 console.log(data);
                 if (data.meals) {
                   data.meals.forEach(meal => {
-                    
+                    // dynamics creation of popup modal
+
+                    // const recipeDOM = document.querySelector('.recipe-modal');
+
+                    // const modalfade = document.createElement('div');
+                    // modalfade.classList.add('modal' ,'fade');
+                    // recipeDOM.appendChild(modalfade);
+
                     const mealName = document.querySelector('.food-name');
                     const mealCategory = document.querySelector('.food-namebtn');
                     const mealRecipe = document.querySelector('.recipe-instructions');
