@@ -125,6 +125,7 @@ header .signature {
     height: 20rem;
     background: var(--white);
     border-radius: 10px;
+    margin: 10px;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
 }
 .recipe-card:hover{
@@ -133,22 +134,22 @@ cursor: pointer;
 
 .recipe-card img {
     width: 100%;
-    height: 65%;
+    height: 60%;
     border-radius: 10px 10px 0 0;
 }
 
 .recipe-card h4 {
-    font-size: 1.3rem;
+    font-size: 1rem;
     font-family: var(--heading-font);
-    margin-top: 15px;
+    margin-top: 5px;
 }
 
 .recipe-card button {
-    height: 3.2rem;
-    font-size: 1.2rem;
-    margin-top: 10px;
-    width: 10rem;
-    border-radius: 30px;
+    height: 2.5rem;
+    font-size: 1rem;
+    margin-top: 5px;
+    width: 8rem;
+    border-radius: 15px;
     padding: 0.5rem;
     border: none;
     outline: none;
@@ -169,6 +170,7 @@ cursor: pointer;
     align-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 10px;
 }
 
 /* beginning of modal */

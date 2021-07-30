@@ -1,19 +1,5 @@
 
 @media only screen and (max-width: 800px) {
-
-    .recipes-cards-container {
-        margin-top: 2rem;
-        padding: 1rem;
-    }
-
-    .recipe-card {
-        height: 25rem;
-        width: 42%;
-        margin: 1rem;
-    }
-}
-
-@media only screen and (max-width: 600px) {
     header {
         margin: 10px;
         width: 97%;
@@ -25,9 +11,21 @@
     }
 
     .input-items button {
-        height: 3rem;
+        height: 2rem;
+    }
+
+    .recipes-cards-container {
+        margin-top: 2rem;
+    }
+
+    .recipe-card {
+        height: 20rem;
+        width: 40%;
+        margin: 1rem;
+        
     }
 }
+
 
 @media only screen and (max-width: 520px) {
     header {
@@ -41,7 +39,7 @@
     }
 
     .input-items button {
-        height: 3rem;
+        height: 2rem;
     }
 
     .recipes-cards-container {
@@ -49,8 +47,8 @@
     }
 
     .recipe-card {
-        min-height: 30rem;
-        width: 100%;
+        height: 20rem;
+        width: 80%;
         margin: 0 0 1rem 0;
     }
 
