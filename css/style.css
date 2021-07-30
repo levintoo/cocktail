@@ -115,14 +115,15 @@ header .signature {
     justify-content: center;
     align-content: center;
     position: relative;
-    margin-top: 4rem;
+    margin-top: 0rem;
     padding: 1rem;
     scroll-behavior: smooth;
     scroll-snap-type: y mandatory;
 }
 
 .recipe-card {
-    height: 20rem;
+    height: 22rem;
+    width: 22%;
     background: var(--white);
     border-radius: 10px;
     margin: 10px;
@@ -147,7 +148,7 @@ cursor: pointer;
 .recipe-card button {
     height: 2.5rem;
     font-size: 1rem;
-    margin-top: 5px;
+    margin-top: 2px;
     width: 8rem;
     border-radius: 15px;
     padding: 0.5rem;
@@ -176,7 +177,9 @@ cursor: pointer;
 /* beginning of modal */
 .modal-content{
     background: var(--tenne-tawny);
-    overflow: scroll;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    width: 80vh;
 }
 .recipe-popup{
     position: relative;
@@ -185,6 +188,9 @@ cursor: pointer;
     align-items: center;
     margin-right: 10px;
     margin-left: 10px
+}
+.recipe-popup h1{
+    font: size 1.1rem;
 }
 .btn-close{
     position: absolute;
@@ -222,6 +228,7 @@ cursor: pointer;
 }
 .recipe-instructions{
     color: var(--white);
+    font-size: 1rem;
 }
 .recipe-popup a{
     color: var(--white);
