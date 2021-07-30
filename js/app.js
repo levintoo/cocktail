@@ -56,13 +56,53 @@ function getMealList() {
                 console.log(data);
                 if (data.meals) {
                   data.meals.forEach(meal => {
-                    // dynamics creation of popup modal
 
-                    // const recipeDOM = document.querySelector('.recipe-modal');
+  
+                    // dynamic creation of popup modal
 
-                    // const modalfade = document.createElement('div');
-                    // modalfade.classList.add('modal' ,'fade');
-                    // recipeDOM.appendChild(modalfade);
+                    const modalContent = document.querySelector('.modal-content');
+
+                    const closeModalButton = document.createElement('button');
+                    closeModalButton.classList.add('btn-close');
+                    modalContent.appendChild(closeModalButton);
+                    closeModalButton.setAttribute('type','button');
+                    closeModalButton.setAttribute('data-bs-dismiss','modal');
+                    closeModalButton.setAttribute('aria-label','Close');
+
+                    const recipePopup = document.createElement('div');
+                    recipePopup.classList.add('recipe-popup');
+                    modalContent.appendChild(recipePopup);
+
+                    const foodNameDIalog = document.createElement('h1');
+                    foodNameDIalog.classList.add('food-name');
+                    recipePopup.appendChild(foodNameDIalog);
+
+                    const foodButtonDIalog = document.createElement('button');
+                    foodButtonDIalog.classList.add('food-namebtn');
+                    recipePopup.appendChild(foodButtonDIalog);
+
+                    const foodInstructionsDIalog = document.createElement('h6');
+                    recipePopup.appendChild(foodInstructionsDIalog);
+                    foodInstructionsDIalog.innerHTML=('Instructions');
+
+                    const foodInstructionsTextDIalog = document.createElement('p');
+                    recipePopup.appendChild(foodInstructionsTextDIalog);
+                    foodInstructionsTextDIalog.classList.add('recipe-instructions');
+
+                    const foodImageDIalog = document.createElement('img');
+                    recipePopup.appendChild(foodImageDIalog);
+                    foodImageDIalog.classList.add('rouded-recipe-image','recipeImage');
+                    foodImageDIalog.setAttribute('alt', 'food-image')
+                   
+                    const foodInstructionsLinktDIalog = document.createElement('a');
+                    recipePopup.appendChild(foodInstructionsLinktDIalog);
+                    foodInstructionsLinktDIalog.classList.add('mealVideolink');
+                    
+
+                    const foodInstructionsLinkTextDIalog = document.createElement('p');
+                    foodInstructionsLinktDIalog.appendChild(foodInstructionsLinkTextDIalog);
+                    foodInstructionsLinkTextDIalog.innerHTML=('Watch Video')
+                    
 
                     const mealName = document.querySelector('.food-name');
                     const mealCategory = document.querySelector('.food-namebtn');
